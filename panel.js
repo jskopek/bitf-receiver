@@ -4,6 +4,7 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var bonjour = require('bonjour')();
+var opn = require('opn');
 
 app.use(express.static('static'));
 app.use(cors());
@@ -36,3 +37,5 @@ bonjour.publish({
         offsetcol: offsetCol
     }
 });
+
+opn(`http://localhost:${port}`);
